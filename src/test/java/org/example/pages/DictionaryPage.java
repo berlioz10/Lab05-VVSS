@@ -1,6 +1,7 @@
 package org.example.pages;
 
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -34,5 +35,10 @@ public class DictionaryPage extends PageObject {
         return definitionList.findElements(By.tagName("li")).stream()
                 .map( element -> element.getText() )
                 .collect(Collectors.toList());
+    }
+
+    public String getAlertString() {
+        Alert alert = getAlert();
+        return alert.getText();
     }
 }
