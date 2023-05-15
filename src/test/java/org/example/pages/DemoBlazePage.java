@@ -49,4 +49,14 @@ public class DemoBlazePage extends PageObject {
         WebElementFacade productAnchor = find(By.linkText("Samsung galaxy s6"));
         productAnchor.click();
     }
+
+    public boolean hasLogin() {
+        WebElementFacade loginButton = find(By.id("login2"));
+        return loginButton.isDisplayed();
+    }
+
+    public boolean hasLogout() {
+        WebElementFacade logoutButton = find(By.id("logout2"));
+        return logoutButton.isDisplayed();
+    }
 }

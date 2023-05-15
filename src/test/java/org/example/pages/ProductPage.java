@@ -14,6 +14,6 @@ public class ProductPage extends PageObject {
 
     public boolean hasAddToCartButton() {
         WebElementFacade addToCartButton = find(By.cssSelector(".btn.btn-success.btn-lg"));
-        return addToCartButton != null;
+        return addToCartButton.isPresent();
     }
 }

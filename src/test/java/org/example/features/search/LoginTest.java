@@ -28,17 +28,19 @@ public class LoginTest {
     @Issue("#Try-First-1")
     @Test
     public void login_with_random_account_test() throws InterruptedException {
-
+        anna.is_the_home_page();
         anna.pressLogin();
         anna.addUsernameAndPassword("123", "123");
         anna.pressLoginSubmit();
+//        anna.should_see_logout();
         anna.pressLogout();
+        anna.should_see_login();
     }
 
     @Issue("#Try-First-2")
     @Test
     public void login_without_password_test() throws InterruptedException {
-
+        anna.is_the_home_page();
         anna.pressLogin();
         anna.addUsernameAndPassword("123", "");
         anna.pressLoginSubmit();
