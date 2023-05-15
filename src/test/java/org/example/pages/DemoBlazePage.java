@@ -41,7 +41,12 @@ public class DemoBlazePage extends PageObject {
 
 
     public void pressLogout() {
-        WebElementFacade loginButton = find(By.id("logout2"));
-        loginButton.click();
+        WebElementFacade logoutButton = find(By.id("logout2"));
+        logoutButton.click();
+    }
+
+    public void clickOnProduct() {
+        WebElementFacade productAnchor = find(By.linkText("Samsung galaxy s6"));
+        productAnchor.click();
     }
 }

@@ -1,0 +1,3 @@
+Log into the website, click on a product, add to cart, log out
+As a user
+I want to be able to log into the website, view a product, add it to cart and then log out.

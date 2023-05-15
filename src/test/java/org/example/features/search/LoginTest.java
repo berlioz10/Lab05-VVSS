@@ -3,7 +3,6 @@ package org.example.features.search;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 
 import org.example.steps.serenity.FirstSteps;
@@ -12,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
-import org.example.steps.serenity.EndUserSteps;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.Assert.assertEquals;
