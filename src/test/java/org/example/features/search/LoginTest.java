@@ -1,5 +1,8 @@
 package org.example.features.search;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
@@ -12,6 +15,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -27,9 +33,16 @@ public class LoginTest {
 
     @Issue("#Try-First-1")
     @Test
-    public void login_with_random_account_test() throws InterruptedException {
+    public void login_with_random_account_test() throws InterruptedException, FileNotFoundException {
+
+        JsonElement jsonElement = JsonParser.parseReader(new FileReader("src/test/resources/test.json"));
+
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        String username = jsonObject.get("username").getAsString();
+        String password = jsonObject.get("password").getAsString();
         anna.pressLogin();
-        anna.addUsernameAndPassword("123", "123");
+        anna.addUsernameAndPassword(username, password);
         anna.pressLoginSubmit();
 //        anna.should_see_logout();
         anna.pressLogout();
@@ -38,9 +51,17 @@ public class LoginTest {
 
     @Issue("#Try-First-2")
     @Test
-    public void login_without_password_test() throws InterruptedException {
+    public void login_without_password_test() throws InterruptedException, FileNotFoundException {
+
+        JsonElement jsonElement = JsonParser.parseReader(new FileReader("src/test/resources/test.json"));
+
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        String username = jsonObject.get("username").getAsString();
+        String password = jsonObject.get("empty_password").getAsString();
+
         anna.pressLogin();
-        anna.addUsernameAndPassword("123", "");
+        anna.addUsernameAndPassword(username, password);
         anna.pressLoginSubmit();
 
         Alert alert = ExpectedConditions.alertIsPresent().apply(webdriver);

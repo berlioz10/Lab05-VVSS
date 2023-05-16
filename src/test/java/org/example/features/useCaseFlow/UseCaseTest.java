@@ -1,5 +1,9 @@
 package org.example.features.useCaseFlow;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Issue;
 import net.thucydides.core.annotations.Managed;
@@ -12,6 +16,9 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -32,9 +39,17 @@ public class UseCaseTest {
 
     @Issue("#Use-case-test")
     @Test
-    public void use_case_test() {
+    public void use_case_test() throws FileNotFoundException {
+
+        JsonElement jsonElement = JsonParser.parseReader(new FileReader("src/test/resources/test.json"));
+
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        String username = jsonObject.get("username").getAsString();
+        String password = jsonObject.get("password").getAsString();
+
         loginSteps.pressLogin();
-        loginSteps.addUsernameAndPassword("123", "123");
+        loginSteps.addUsernameAndPassword(username, password);
         loginSteps.pressLoginSubmit();
 //        loginSteps.should_see_logout();
 
